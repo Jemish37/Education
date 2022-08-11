@@ -55,6 +55,7 @@ $route['translate_uri_dashes'] = FALSE;
 
 
 $route["home"] = 'front';
+$route["contact-us"] = 'front/contactUs';
 
 
 $route["admin"] = 'admin';
@@ -63,6 +64,7 @@ $route["admin/slider-section"] = 'admin/sliderSection';
 $route["admin/update-aboutdata"] = 'admin/updateAboutData';
 $route["admin/course"] = 'admin/course';
 $route["admin/add-course/(:any)"] = 'admin/addCourse/$1';
+$route["admin/add-slider/(:any)"] = 'admin/addSlider/$1';
 $route["admin/add-course"] = 'admin/addCourse';
 $route["admin/add-slider"] = 'admin/addSlider';
 $route["admin/add-coursedata"] = 'admin/addCourseData';

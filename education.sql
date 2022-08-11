@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 11, 2022 at 03:52 PM
+-- Generation Time: Aug 11, 2022 at 08:25 PM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 8.1.6
 
@@ -38,8 +38,8 @@ CREATE TABLE `contents` (
 --
 
 INSERT INTO `contents` (`id`, `content_key`, `content_value`) VALUES
-(1, 'about_text', '<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Rerum pariatur fuga eveniet soluta aspernatur rem, nam voluptatibus voluptate voluptates sapiente, inventore. Voluptatem, maiores esse molestiae.</p>\r\n<ul>\r\n<li>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</li>\r\n<li>Saepe a minima quod iste libero rerum dicta!</li>\r\n<li>Voluptas obcaecati, iste porro fugit soluta consequuntur. Veritatis?</li>\r\n<li>Ipsam deserunt numquam ad error rem unde, omnis.</li>\r\n<li>Repellat assumenda adipisci pariatur ipsam eos similique, explicabo.</li>\r\n</ul>\r\n<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Perspiciatis quaerat harum facilis excepturi et? Mollitia!</p>'),
-(2, 'about_video', 'https://www.youtube.com/watch?v=YyfNdC65uKk&ab_channel=AestheticSky');
+(1, 'about_text', '<p>Lowrem ipsum dolor sit amet, consectetur adipisicing elit. Rerum pariatur fuga eveniet soluta aspernatur rem, nam voluptatibus voluptate voluptates sapiente, inventore. Voluptatem, maiores esse molestiae.</p>\r\n<ul>\r\n<li>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</li>\r\n<li>Saepe a minima quod iste libero rerum dicta!</li>\r\n<li>Voluptas obcaecati, iste porro fugit soluta consequuntur. Veritatis?</li>\r\n<li>Ipsam deserunt numquam ad error rem unde, omnis.</li>\r\n<li>Repellat assumenda adipisci pariatur ipsam eos similique, explicabo.</li>\r\n</ul>\r\n<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Perspiciatis quaerat harum facilis excepturi et? Mollitia!</p>'),
+(2, 'about_video', 'https://youtu.be/QYf-XQDFWd4');
 
 -- --------------------------------------------------------
 
@@ -65,8 +65,7 @@ CREATE TABLE `courses` (
 INSERT INTO `courses` (`id`, `name`, `attachment`, `short_desc`, `long_desc`, `duration`, `price`, `date`) VALUES
 (1, 'Drawing', NULL, 'Lorem ipsum dolor sit amet,', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris eu ante felis. Vivamus nec viverra tortor, sit amet dictum sem. Nam molestie nisl eget nulla blandit ultricies. Nullam vehicula cursus eros eget pellentesque. ', 75, '165.00', '2022-08-11 12:41:19'),
 (2, 'Engineering', NULL, 'Lorem ipsum dolor sit amet,', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris eu ante felis. Vivamus nec viverra tortor, sit amet dictum sem. Nam molestie nisl eget nulla blandit ultricies. Nullam vehicula cursus eros eget pellentesque. ', 75, '30.00', '2022-08-11 12:44:19'),
-(3, 'fdsgf', NULL, 'gfdgddfgdfgdfggfdgdfg', 'gfdgfdgfdfdg gfdgfdgfdfdg gfdgfdgfdfdg gfdgfdgfdfdg gfdgfdgfdfdg gfdgfdgfdfdg gfdgfdgfdfdg gfdgfdgfdfdg gfdgfdgfdfdg ', 150, '25.00', '2022-08-11 17:42:53'),
-(4, 'ghfhghg', NULL, 'gfhgfhgh gf gfhgf dfhtyghn dghguygfhjg', 'gfhgfhgh gf gfhgf dfhtyghn dghguygfhjg gfhgfhgh gf gfhgf dfhtyghn dghguygfhjg gfhgfhgh gf gfhgf dfhtyghn dghguygfhjg gfhgfhgh gf gfhgf dfhtyghn dghguygfhjg', 12, '100.00', '2022-08-11 18:04:39');
+(3, 'Academic', NULL, 'Lorem ipsum dolor sit amet.', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet quod nisi quisquam modi dolore, dicta obcaecati architecto quidem ullam quia.', 45, '165.00', '2022-08-11 17:42:53');
 
 -- --------------------------------------------------------
 
@@ -79,7 +78,7 @@ CREATE TABLE `sliders` (
   `title` varchar(255) DEFAULT NULL,
   `title_2` text DEFAULT NULL,
   `description` text DEFAULT NULL,
-  `attachment` int(11) NOT NULL,
+  `attachment` varchar(255) DEFAULT NULL,
   `date` datetime NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -88,7 +87,9 @@ CREATE TABLE `sliders` (
 --
 
 INSERT INTO `sliders` (`id`, `title`, `title_2`, `description`, `attachment`, `date`) VALUES
-(1, 'dsgsd', 'dfsgfdsgdhfh h fhdfhfd hdfh', 'fgfgg dfgfd hfhdfh dfhfdhdfhewt gftyt ', 1660224268, '2022-08-11 18:54:28');
+(1, 'Quality Free Template', 'Best Education Template Ever', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolor amet error eius reiciendis eum sint unde eveniet deserunt est debitis corporis temporibus recusandae accusamus.', '1660241040.jpg', '2022-08-11 23:17:30'),
+(2, 'Exclusivly For Education', 'Education For Everyone', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolor amet error eius reiciendis eum sint unde eveniet deserunt est debitis corporis temporibus recusandae accusamus.', '1660240106.jpg', '2022-08-11 23:18:26'),
+(3, 'Welcome To Varsity', 'We Will Help You To Learn', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolor amet error eius reiciendis eum sint unde eveniet deserunt est debitis corporis temporibus recusandae accusamus.', '1660240152.jpg', '2022-08-11 23:19:12');
 
 --
 -- Indexes for dumped tables
@@ -132,7 +133,7 @@ ALTER TABLE `courses`
 -- AUTO_INCREMENT for table `sliders`
 --
 ALTER TABLE `sliders`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

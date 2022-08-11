@@ -56,6 +56,16 @@ class Admin extends CI_Controller
         $this->loads("slider-section", $data);
     }
 
+    public function addSlider($id = ""){
+        $data = [];
+        if ($id != "") {
+            $sliderData = getRow("md5(id) as id, title, title_2,description,date,attachment", "sliders", "md5(id) = '$id'");
+            $data["data"] = $sliderData;
+        }
+        $data["title"] = "Slider Section";
+        $this->loads("add-slider", $data);
+
+    }
     public function updateAboutData()
     {
 
@@ -177,32 +187,66 @@ class Admin extends CI_Controller
             if (isset($_POST['title'])  && $_POST["title"] != "") {
                 if (isset($_POST["title2"]) && $_POST["title2"] != "") {
                     if (isset($_POST["description"]) && $_POST["description"] != "") {
-
-                        if (!empty($_FILES['image']) && $_FILES['image']['name'] != '') {
-                            if ($_FILES['image']['size'] > 0) {
-                                $extt = pathinfo($_FILES['image']['name'], PATHINFO_EXTENSION);
-                                if ($extt == "png" || $extt == "PNG" || $extt == "jpg" || $extt == "JPG" || $extt == "jpeg" || $extt == "JPEG") {
-                                    $attachment = time() . '.' . $extt;
-                                    move_uploaded_file($_FILES['file']['tmp_name'], "src/uploads/" . $attachment);
-
-                                    $addData = [
-                                        "title" => $_POST["title"],
-                                        "title_2" => $_POST["title2"],
-                                        "description" => $_POST["description"],
-                                        "attachment" => $attachment,
-                                    ];
-                                    $id = insert("sliders", $addData);
-                                    if ($id) {
-                                        $res[2] = "Slider added Successfully";
-                                        $res[0] = true;
+                        if (isset($_POST["id"]) && $_POST["id"]!= "") {
+                            $attachment = "";
+                            if (!empty($_FILES['image']) && $_FILES['image']['name'] != '') {
+                                if ($_FILES['image']['size'] > 0) {
+                                    $extt = pathinfo($_FILES['image']['name'], PATHINFO_EXTENSION);
+                                    if ($extt == "png" || $extt == "PNG" || $extt == "jpg" || $extt == "JPG" || $extt == "jpeg" || $extt == "JPEG") {
+                                        $attachment = time() . '.' . $extt;
+                                        move_uploaded_file($_FILES['image']['tmp_name'], "src/uploads/" . $attachment);
+                                        
+                                    } else {
+                                        $res[2] = 'Please choose valid png or jpg image';
                                     }
                                 } else {
-                                    $res[2] = 'Please choose valid png or jpg image';
+                                    $res[2] = "Invalid File";
                                 }
-                            } else {
-                                $res[2] = "Invalid File";
+                            }
+
+                            $updData = [
+                                "title" => $_POST["title"],
+                                "title_2" => $_POST["title2"],
+                                "description" => $_POST["description"],
+                            ];
+
+                            if ($attachment != "") {
+                                $updData["attachment"] = $attachment;
+                            }
+                            $id = update("sliders", ["md5(id)" => $_POST["id"]], $updData);
+                            if ($id) {
+                                $res[2] = "Slider Update Successfully";
+                                $res[0] = true;
+                            }
+
+
+                        }else{
+                            if (!empty($_FILES['image']) && $_FILES['image']['name'] != '') {
+                                if ($_FILES['image']['size'] > 0) {
+                                    $extt = pathinfo($_FILES['image']['name'], PATHINFO_EXTENSION);
+                                    if ($extt == "png" || $extt == "PNG" || $extt == "jpg" || $extt == "JPG" || $extt == "jpeg" || $extt == "JPEG") {
+                                        $attachment = time() . '.' . $extt;
+                                        move_uploaded_file($_FILES['image']['tmp_name'], "src/uploads/" . $attachment);
+                                        $addData = [
+                                            "title" => $_POST["title"],
+                                            "title_2" => $_POST["title2"],
+                                            "description" => $_POST["description"],
+                                            "attachment" => $attachment,
+                                        ];
+                                        $id = insert("sliders", $addData);
+                                        if ($id) {
+                                            $res[2] = "Slider added Successfully";
+                                            $res[0] = true;
+                                        }
+                                    } else {
+                                        $res[2] = 'Please choose valid png or jpg image';
+                                    }
+                                } else {
+                                    $res[2] = "Invalid File";
+                                }
                             }
                         }
+                        
 
                     } else {
                         $res[2] = "Course Long Description is Empty";

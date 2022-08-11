@@ -1,52 +1,29 @@
 <!-- Start Slider -->
 <section id="mu-slider">
     <!-- Start single slider item -->
-    <div class="mu-slider-single">
-        <div class="mu-slider-img">
-            <figure>
-                <img src="img/slider/1.jpg" alt="img">
-            </figure>
+
+    <?php
+    foreach ($sliderData as $slider) {
+    ?>
+        <div class="mu-slider-single">
+            <div class="mu-slider-img">
+                <figure>
+                    <img src="<?=base_url()?>/src/uploads/<?=$slider["attachment"]?>" alt="img">
+                </figure>
+            </div>
+            <div class="mu-slider-content">
+                <h4><?=$slider["title"]?></h4>
+                <span></span>
+                <h2><?=$slider["title_2"]?></h2>
+                <p><?=$slider["description"]?></p>
+                <a href="#" class="mu-read-more-btn">Read More</a>
+            </div>
         </div>
-        <div class="mu-slider-content">
-            <h4>Welcome To Varsity</h4>
-            <span></span>
-            <h2>We Will Help You To Learn</h2>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolor amet error eius reiciendis eum sint unde eveniet deserunt est debitis corporis temporibus recusandae accusamus.</p>
-            <a href="#" class="mu-read-more-btn">Read More</a>
-        </div>
-    </div>
-    <!-- Start single slider item -->
-    <!-- Start single slider item -->
-    <div class="mu-slider-single">
-        <div class="mu-slider-img">
-            <figure>
-                <img src="img/slider/2.jpg" alt="img">
-            </figure>
-        </div>
-        <div class="mu-slider-content">
-            <h4>Premiumu Quality Free Template</h4>
-            <span></span>
-            <h2>Best Education Template Ever</h2>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolor amet error eius reiciendis eum sint unde eveniet deserunt est debitis corporis temporibus recusandae accusamus.</p>
-            <a href="#" class="mu-read-more-btn">Read More</a>
-        </div>
-    </div>
-    <!-- Start single slider item -->
-    <!-- Start single slider item -->
-    <div class="mu-slider-single">
-        <div class="mu-slider-img">
-            <figure>
-                <img src="img/slider/3.jpg" alt="img">
-            </figure>
-        </div>
-        <div class="mu-slider-content">
-            <h4>Exclusivly For Education</h4>
-            <span></span>
-            <h2>Education For Everyone</h2>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolor amet error eius reiciendis eum sint unde eveniet deserunt est debitis corporis temporibus recusandae accusamus.</p>
-            <a href="#" class="mu-read-more-btn">Read More</a>
-        </div>
-    </div>
+    <?php
+    }
+
+    ?>
+   
     <!-- Start single slider item -->
 </section>
 <!-- End Slider -->
@@ -98,20 +75,12 @@
                                     <h2>About Us</h2>
                                 </div>
                                 <!-- End Title -->
-                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Rerum pariatur fuga eveniet soluta aspernatur rem, nam voluptatibus voluptate voluptates sapiente, inventore. Voluptatem, maiores esse molestiae.</p>
-                                <ul>
-                                    <li>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</li>
-                                    <li>Saepe a minima quod iste libero rerum dicta!</li>
-                                    <li>Voluptas obcaecati, iste porro fugit soluta consequuntur. Veritatis?</li>
-                                    <li>Ipsam deserunt numquam ad error rem unde, omnis.</li>
-                                    <li>Repellat assumenda adipisci pariatur ipsam eos similique, explicabo.</li>
-                                </ul>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Perspiciatis quaerat harum facilis excepturi et? Mollitia!</p>
+                                <?=$aboutData["about_text"]?>
                             </div>
                         </div>
                         <div class="col-lg-6 col-md-6">
                             <div class="mu-about-us-right">
-                                <a id="mu-abtus-video" href="https://www.youtube.com/embed/HN3pm9qYAUs" target="mutube-video">
+                                <a id="mu-abtus-video" href="<?=$aboutData["about_video"]?>" target="mutube-video">
                                     <img src="img/about-us.jpg" alt="img">
                                 </a>
                             </div>
@@ -271,16 +240,16 @@
                                     <figure class="mu-latest-course-img">
                                         <a href="#"><img src="img/courses/1.jpg" alt="img"></a>
                                         <figcaption class="mu-latest-course-imgcaption">
-                                            <a href="#"><?=$course["name"]?></a>
-                                            <span><i class="fa fa-clock-o"></i> <?=$course["duration"]?> Days</span>
+                                            <a href="#"><?= $course["name"] ?></a>
+                                            <span><i class="fa fa-clock-o"></i> <?= $course["duration"] ?> Days</span>
                                         </figcaption>
                                     </figure>
                                     <div class="mu-latest-course-single-content">
-                                        <h4><a href="#"> <?=$course["short_desc"]?> </a></h4>
-                                        <p><?=$course["long_desc"]?></p>
+                                        <h4><a href="#"> <?= $course["short_desc"] ?> </a></h4>
+                                        <p><?= $course["long_desc"] ?></p>
                                         <div class="mu-latest-course-single-contbottom">
                                             <a class="mu-course-details" href="#">Details</a>
-                                            <span class="mu-course-price" href="#">$<?=$course["price"]?></span>
+                                            <span class="mu-course-price" href="#">$<?= $course["price"] ?></span>
                                         </div>
                                     </div>
                                 </div>
@@ -290,7 +259,7 @@
 
                         ?>
 
-                    
+
                     </div>
                     <!-- End latest course content -->
                 </div>

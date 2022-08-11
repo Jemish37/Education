@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title> <?=$title?> </title>
+    <title> <?= $title ?> </title>
     <base href="src/">
     <!-- Favicon -->
     <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon">
@@ -100,7 +100,7 @@
                     </button>
                     <!-- LOGO -->
                     <!-- TEXT BASED LOGO -->
-                    <a class="navbar-brand" href="<?=base_url()?>"><i class="fa fa-university"></i><span>Varsity</span></a>
+                    <a class="navbar-brand" href="<?= base_url() ?>"><i class="fa fa-university"></i><span>Varsity</span></a>
                     <!-- IMG BASED LOGO  -->
                     <!-- <a class="navbar-brand" href="index.html"><img src="img/logo.png" alt="logo"></a> -->
                 </div>
@@ -110,11 +110,16 @@
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown">Course <span class="fa fa-angle-down"></span></a>
                             <ul class="dropdown-menu" role="menu">
-                                <li><a href="course.html">Course Archive</a></li>
-                                <li><a href="course-detail.html">Course Detail</a></li>
+                                <?php
+                                foreach ($courseData as $key => $course) {
+                                ?>
+                                    <li><a href="course.html"><?=$course["name"]?></a></li>
+
+                                <?php
+                                }
+                                ?>
                             </ul>
                         </li>
-                        <li><a href="gallery.html">Gallery</a></li>
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown">Blog <span class="fa fa-angle-down"></span></a>
                             <ul class="dropdown-menu" role="menu">
@@ -122,8 +127,7 @@
                                 <li><a href="blog-single.html">Blog Single</a></li>
                             </ul>
                         </li>
-                        <li><a href="contact.html">Contact</a></li>
-                        <li><a href="404.html">404 Page</a></li>
+                        <li><a href="<?=base_url()?>contact-us">Contact</a></li>
                         <li><a href="#" id="mu-search-icon"><i class="fa fa-search"></i></a></li>
                     </ul>
                 </div>

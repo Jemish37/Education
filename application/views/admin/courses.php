@@ -31,7 +31,7 @@
                         <div class="col-md-4 my-auto">$<?= $value["price"] ?></div>
                         <div class="col-md-4 d-flex justify-content-center">
                             <a class="my-auto btn btn-sm mx-2 btn-dark" href="<?= base_url(ADM) ?>/add-course/<?= $value['id'] ?>"> Edit </a>
-                            <a class="my-auto btn btn-sm mx-2 btn-danger" href="<?= base_url(ADM) ?>/delete-course/<?= $value['id'] ?>"> Delete </a>
+                            <button class="my-auto btn btn-sm mx-2 btn-danger"> Delete </button>
                         </div>
                     </div>
                 </div>
